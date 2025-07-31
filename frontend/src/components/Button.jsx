@@ -1,8 +1,11 @@
-const Button = ({text = "Submit", onClick}) => {
+import '../components/Button.css'
+const Button = ({ text = "Submit", onClick }) => {
     return (
-        <div className="button-container">
-            <button onClick={onClick}>{text}</button>
-        </div>
+        <button className='btn' onClick={onClick}>
+            <span className='btn-text'>
+                {text}
+            </span>
+        </button>
     )
 }
 export default Button

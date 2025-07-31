@@ -1,0 +1,82 @@
+.filterSearchBarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 90vw;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 240px;
+  background: white;
+  border-radius: 50px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  color: #333;
+  font-size: 15px;
+  padding: 16px 50px 16px 20px;
+}
+
+.searchButton {
+  position: absolute;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.filterDropdown {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 15px;
+  background: #fff;
+  color: #333;
+  min-width: 130px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .filterSearchBarWrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .filters {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .filterDropdown {
+    flex: 1;
+    min-width: 100px;
+  }
+}

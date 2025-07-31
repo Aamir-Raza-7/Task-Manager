@@ -1,19 +1,43 @@
-import "./Input.css"
-const Input = ({label, type = "text", name, value, onChange})=>{
-    return (
-        <>
-            <div className="input-container">
-                <label htmlFor="">{label}</label>
-                <input 
-                    type={type} 
-                    name={name}
-                    id={name}
-                    value={value}
-                    onChange={onChange}
-                    placeholder={`Enter your ${label}`}
-                />
-            </div>
-        </>
-    )
-}
-export default Input
+// Input.jsx
+import React, { useState } from 'react';
+import './Input.css';
+
+const Input = ({
+  label,
+  type = 'text',
+  name,
+  value,
+  onChange,
+  required = true,
+  error
+}) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const hasText = value && value.trim() !== '';
+
+  return (
+    <div className={`form-control ${isFocused || hasText ? 'filled' : ''}`}>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        readOnly={!onChange}
+        required={required}
+        autoComplete="off"
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+      />
+      <label>
+        {label.split('').map((char, idx) => (
+          <span key={idx} style={{ transitionDelay: `${idx * 50}ms` }}>
+            {char}
+          </span>
+        ))}
+      </label>
+      {error && <small className="error-text">{error}</small>}
+    </div>
+  );
+};
+
+export default Input;

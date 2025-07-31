@@ -1,0 +1,127 @@
+.task-card {
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+
+.task-card:hover {
+  transform: scale(1.02);
+}
+
+/* Top Section */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-title-desc h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.description {
+  font-size: 14px;
+  color: #333;
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+  max-width: 100%;
+  display: block;
+}
+.card-title-desc {
+  max-width: 75%;
+}
+/* Status Box */
+.status-box {
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  background-color: #f0f0f0;
+}
+
+.status-box.completed {
+  background-color: #d4edda;
+  border-color: #2ecc71;
+}
+
+.status-box.pending {
+  background-color: #fff3cd;
+  border-color: #f1c40f;
+}
+
+.status-box.in-process {
+  background-color: #d1ecf1;
+  border-color: #3498db;
+}
+
+
+/* Bottom Section */
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.assign-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #444;
+}
+
+.date-info {
+  padding-left: 10px;
+  color: #444;
+  align-self: flex-end;
+}
+
+.card-wrapper {
+  position: relative;
+}
+
+/* Full screen blur effect on body */
+body.global-blur::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* Hovered card effect */
+.task-card.hovered {
+  transform: scale(1.08);
+  z-index: 1000;
+  transition: transform 0.4s ease;
+}
+
+/* Expanded description on hover */
+.description.expanded {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* Ensure other cards stay below */
+.task-card {
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}

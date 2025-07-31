@@ -9,7 +9,7 @@ const login = async(req, res)=>{
     const {email, password} = req.body
 
     if(!email || !password){
-        return res.status(400).json({msg: "bad request: mossing params"})
+        return res.status(400).json({msg: "bad request: missing params"})
     }
     try {
         const userExists = await User.findOne({ email })
@@ -21,9 +21,9 @@ const login = async(req, res)=>{
             return res.status(400).json({ message: "invalid password" })
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             token: genToken(userExists),
-            user: {id: userExists.id, email: userExists.email}
+            user: {id: userExists.id, email: userExists.email, password: userExists.password}
         })
     } catch (err) {
         console.error(err)
@@ -33,7 +33,7 @@ const login = async(req, res)=>{
 
 
 const signup = async(req, res) => {
-    const{name, email, password} = req.body
+    const{name, email, password, role} = req.body
     
     if(!name || !email || !password){
         return res.status(400).json({msg: "bad request: missing params"})
@@ -46,10 +46,10 @@ const signup = async(req, res) => {
             return res.status(400).json({msg: "user already exists"})
         }
         
-        const createUser = await User.create({name, email, password})
-        res.status(200).json({
+        const createUser = await User.create({name, email, password, role})
+        return res.status(200).json({
             token: genToken(createUser),
-            user: {id: createUser.id, email: createUser.email, role: createUser.role}
+            user: {id: createUser.id, email: createUser.email, role: createUser.role, password: createUser.password}
         })
         
     } catch (err) {
